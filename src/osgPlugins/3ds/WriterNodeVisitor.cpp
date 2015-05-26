@@ -423,7 +423,7 @@ WriterNodeVisitor::Material::Material(WriterNodeVisitor & writerNodeVisitor, osg
         osg::Image* img = tex->getImage(0);
         if(img)
         {
-            texture_transparency = (stateset->getMode(GL_BLEND) == osg::StateAttribute::ON);
+            texture_transparency = ((stateset->getMode(GL_BLEND) & osg::StateAttribute::ON) != 0);
             osg::Texture::WrapMode wrapS = tex->getWrap(osg::Texture2D::WRAP_S);
             texture_no_tile = !(wrapS == osg::Texture2D::REPEAT || wrapS == osg::Texture2D::MIRROR);
             image = img;
